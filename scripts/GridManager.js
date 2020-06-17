@@ -5,7 +5,7 @@ const drawingManager = new DrawingManager();
 
 class GridManager {
 
-  createSquare() {
+  createSquare(squareSideSize) {
     const square = document.createElement("div");
     square.classList.add("square");
   
@@ -13,8 +13,8 @@ class GridManager {
       border: 1px solid rgba(0,0,0,.5);
       box-sizing: border-box;
       float: left;
-      height: 60px;
-      width: 60px;
+      height: ${squareSideSize}px;
+      width: ${squareSideSize}px;
     `;
     return square;
   }
@@ -27,11 +27,20 @@ class GridManager {
     drawingManager.colorAllSquares("white");
   }
 
+  resizeGrid(e) {
+    const newSquaresNumber = e.target.dataset.squaresNumber;
+    if (newSquaresNumber == this.getSquaresNumber()) return;
+    this.setSquaresNumber(newSquaresNumber);
+    this.setGrid();
+  }
+
   setGrid() {
     const gridContainer = document.getElementById("grid-container");
+    gridContainer.innerHTML = "";
     const squaresNumber = this.getSquaresNumber();
+    const squareSideSize = 960 / Math.sqrt(squaresNumber); // 960 represents the height/width size of the grid-container in px
     for (let i = 0; i < squaresNumber; i++) {
-      const square = this.createSquare();
+      const square = this.createSquare(squareSideSize);
       square.addEventListener("mouseover", (e) => {
         drawingManager.colorOneSquare(e, "black");
       });

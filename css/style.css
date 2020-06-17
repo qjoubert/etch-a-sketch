@@ -1,5 +1,30 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 1.6rem;
+  align-items: center;
+  margin: 0;
+}
+
 #grid-container {
   height: 960px;
-  margin: 0 auto;
+  margin: 3rem 1rem;
   width: 960px;
+}
+
+#left-buttons-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column nowrap;
+  margin-left: 1rem;
+  width: calc((100vw - 980px) / 2);
+}
+
+.grid-size-button, #reset-button {
+  font-size: 2.6rem;
+  margin: .5rem 0;
 }
