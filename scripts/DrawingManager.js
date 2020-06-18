@@ -13,10 +13,30 @@ class DrawingManager {
     })
   }
   
-  colorOneSquare(event, color) {
+  colorOneSquare(event) {
     if (this.checkIsDrawing() === "true" && event.target.classList.contains("square")) {
-      event.target.style.backgroundColor = color;
+      const drawingColor = this.getDrawingColor();
+      event.target.style.backgroundColor = drawingColor;
     }
+  }
+
+  getDrawingColor() {
+    return sessionStorage.getItem("drawingColor");
+  }
+
+  setColorPickerButtons() {
+    const colorPickerButtons = document.querySelectorAll(".color-picker-button");
+    colorPickerButtons.forEach(button => {
+      const bgColor = button.dataset.color;
+      button.style.backgroundColor = bgColor;
+      button.addEventListener("click", () => {
+        this.setDrawingColor(bgColor)
+      })
+    });
+  }
+
+  setDrawingColor(color) {
+    sessionStorage.setItem("drawingColor", color);
   }
 
   startDrawing() {

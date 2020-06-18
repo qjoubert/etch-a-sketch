@@ -18,6 +18,8 @@ gridSizeButtons.forEach(button => {
 });
 
 const drawingManager = new DrawingManager();
+drawingManager.setDrawingColor("black");
+drawingManager.setColorPickerButtons();
 document.addEventListener("mousedown", (e) => {
   drawingManager.startDrawing();
   drawingManager.colorOneSquare(e, "black");

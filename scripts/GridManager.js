@@ -42,7 +42,7 @@ class GridManager {
     for (let i = 0; i < squaresNumber; i++) {
       const square = this.createSquare(squareSideSize);
       square.addEventListener("mouseover", (e) => {
-        drawingManager.colorOneSquare(e, "black");
+        drawingManager.colorOneSquare(e);
       });
       gridContainer.appendChild(square);
     } 
