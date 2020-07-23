@@ -9,6 +9,12 @@ export default (function() {
     }
   }
 
+  function draw(e) {
+    e.preventDefault();
+    start();
+    colorSquare(e);
+  }
+
   function getColor() {
     return sessionStorage.getItem("drawingColor");
   }
@@ -17,7 +23,8 @@ export default (function() {
     return sessionStorage.getItem("isDrawing");
   }
 
-  function setColor(color) {
+  function setColor(e = null) {
+    const color = e ? e.target.dataset.color : "black";
     sessionStorage.setItem("drawingColor", color);
   }
 
@@ -31,6 +38,7 @@ export default (function() {
 
   return {
     colorSquare,
+    draw,
     getColor,
     setColor,
     start,
